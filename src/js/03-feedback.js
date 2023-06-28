@@ -9,13 +9,16 @@ form.addEventListener('input', throttle(onInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
 const STORAGE_KEY = "feedback-form-state";
-const formData = {};
+// const formData = {};
 
 function onInput(e) {
-   
-    formData[e.target.name] =  e.target.value;
+   const formData = {
+    email: form.elements.email.value,
+    message : form.elements.message.value
+   }
+    // formData[e.target.name] =  e.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-    console.log(formData)
+    // console.log(formData)
 }
 
 updateFormFields();
